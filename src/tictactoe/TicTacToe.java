@@ -1,14 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package tictactoe;
 
-/**
- *
- * @author denis
- */
-import java.io.BufferedReader ;
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 public class TicTacToe {
@@ -23,8 +15,7 @@ public class TicTacToe {
        }
         
     public static void main (String[] args) throws IOException {
-        // TODO code application logic he
-       System.out.println (TicTacToe.Input());
+       
     }
 
 }
