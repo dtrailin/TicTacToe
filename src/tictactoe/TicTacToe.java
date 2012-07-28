@@ -9,10 +9,13 @@ public boolean player = true; // X = True, O = False
 public byte Grid[] = new byte[8];
 
 public void gridReset (){
-    for(int i = 0; i < 8; i = i + 1)
+    for(int i = 0; i < Grid.length; i++)
 		Grid[i] = 0;
 }
+ public void printGrid(){
  
+ 
+ }
  public static String Input () throws IOException{
     InputStreamReader istream = new InputStreamReader(System.in) ;
     BufferedReader bufRead = new BufferedReader(istream) ;
