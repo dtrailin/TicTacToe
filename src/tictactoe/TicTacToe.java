@@ -11,7 +11,10 @@ public void gridReset (){
     for(int i = 0; i < Grid.length; i++)
 		Grid[i] = 0;
 }
- public void printGrid(){
+public void convert() throws IOException{
+    TicTacToe.Input();
+}
+ public void printGrid1(){
    int gridNo = 1;
      for(int row = 0; row < 3; row ++){
         for (int line = 0; line < 3; line++) {
@@ -38,7 +41,7 @@ public void gridReset (){
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
  TicTacToe Grid = new TicTacToe();
 
-  Grid.printGrid();
+  Grid.printGrid1();
  
            }
    }
