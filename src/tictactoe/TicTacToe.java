@@ -13,9 +13,15 @@ public void gridReset (){
 		Grid[i] = 0;
 }
  public void printGrid(){
+    for(int row = 0; row < 3; row ++){
+        for (int line = 0; line < 3; line++) {
+            System.out.print("["+"]");
+        }
+        System.out.printf("%n");
  
- 
+    }  
  }
+ 
  public static String Input () throws IOException{
     InputStreamReader istream = new InputStreamReader(System.in) ;
     BufferedReader bufRead = new BufferedReader(istream) ;
@@ -30,6 +36,7 @@ public void gridReset (){
   System.out.println (Grid.Grid[1]);
   Grid.gridReset();
   System.out.println (Grid.Grid[1]);
+  Grid.printGrid();
  
            }
    }
