@@ -5,24 +5,43 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 public class TicTacToe {      
 public boolean player = true; // X = True, O = False
-public byte Grid[] = new byte[10];
-
+public int Grid[] = new int[10];
+public String textGrid[] = new String[10];
+public boolean gameRun = true;
 public void gridReset (){
     for(int i = 0; i < Grid.length; i++)
-		Grid[i] = 0;
+    {Grid[i] = 0;}
+    for(int i = 0; i < textGrid.length; i++)
+    {textGrid[i] = " ";  }
 }
 public void convert() throws IOException{
  byte input = Byte.parseByte(TicTacToe.Input());
-if (player = true){
+if (player == true){
     Grid[input] = 1;
+player = false;}
+
+else {
+    Grid[input] = 2;
+    player = true;
 }
+    
+
+ for(int i = 0; i < Grid.length; i++){
+ switch (Grid[i]){
+     case 1:
+         textGrid[i] = "X";
+         break;
+     case 2: textGrid[i] = "O";
+         break;
+      }
     }
+}
  public void printGrid1(){
     int gridNo = 1;
      for(int row = 0; row < 3; row ++){
         for (int line = 0; line < 3; line++) {
             
-            System.out.print("["+Grid[gridNo]+"]");
+            System.out.print("["+textGrid[gridNo]+"]");
             gridNo++;
         }
         System.out.printf("%n");
@@ -52,11 +71,10 @@ if (player = true){
    public static void main (String[] args) throws IOException {
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
  TicTacToe Grid = new TicTacToe();
-
+  Grid.gridReset();
   Grid.printGrid();
-  Grid.convert();
-  Grid.printGrid1();
-  
- 
+  while ( Grid.gameRun = true){ 
+   Grid.convert();
+  Grid.printGrid1();}
            }
    }
