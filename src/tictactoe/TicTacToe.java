@@ -3,7 +3,6 @@ package tictactoe;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-;
 public class TicTacToe {      
 public boolean player = true; // X = True, O = False
 public byte Grid[] = new byte[8];
@@ -13,13 +12,19 @@ public void gridReset (){
 		Grid[i] = 0;
 }
  public void printGrid(){
-    for(int row = 0; row < 3; row ++){
+   int gridNo = 1;
+     for(int row = 0; row < 3; row ++){
         for (int line = 0; line < 3; line++) {
-            System.out.print("["+"]");
+            
+            System.out.print("["+gridNo+"]");
+            gridNo++;
         }
         System.out.printf("%n");
  
     }  
+ }
+ public void setGrid(){
+     
  }
  
  public static String Input () throws IOException{
@@ -32,10 +37,7 @@ public void gridReset (){
    public static void main (String[] args) throws IOException {
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
  TicTacToe Grid = new TicTacToe();
- Grid.Grid[1]=23;
-  System.out.println (Grid.Grid[1]);
-  Grid.gridReset();
-  System.out.println (Grid.Grid[1]);
+
   Grid.printGrid();
  
            }
