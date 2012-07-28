@@ -12,10 +12,14 @@ public void gridReset (){
 		Grid[i] = 0;
 }
 public void convert() throws IOException{
-    TicTacToe.Input();
+ byte input = Byte.parseByte(TicTacToe.Input());
+ System.out.println(input);
+if (player = true){
+    
 }
+    }
  public void printGrid1(){
-   int gridNo = 1;
+    int gridNo = 1;
      for(int row = 0; row < 3; row ++){
         for (int line = 0; line < 3; line++) {
             
@@ -26,8 +30,17 @@ public void convert() throws IOException{
  
     }  
  }
- public void setGrid(){
-     
+ public void printGrid(){
+     int gridNo = 0;
+     for(int row = 0; row < 3; row ++){
+        for (int line = 0; line < 3; line++) {
+            
+            System.out.print("["+gridNo+"]");
+            gridNo++;
+        }
+        System.out.printf("%n");
+ 
+    }
  }
  
  public static String Input () throws IOException{
@@ -42,6 +55,7 @@ public void convert() throws IOException{
  TicTacToe Grid = new TicTacToe();
 
   Grid.printGrid1();
+  
  
            }
    }
