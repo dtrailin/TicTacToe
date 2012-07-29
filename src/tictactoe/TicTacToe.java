@@ -3,7 +3,8 @@ package tictactoe;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-public class TicTacToe {      
+public class TicTacToe { 
+    //1 = X, 2 = O
 public boolean player = true; // X = True, O = False
 public int Grid[] = new int[10];
 public String textGrid[] = new String[10];
@@ -73,8 +74,12 @@ else {
  TicTacToe Grid = new TicTacToe();
   Grid.gridReset();
   Grid.printGrid();
-  while ( Grid.gameRun = true){ 
+  while ( Grid.gameRun == true){ 
    Grid.convert();
-  Grid.printGrid1();}
+  Grid.printGrid1();
+  if (Grid.Grid[4] == Grid.Grid[5] && Grid.Grid [5] == Grid.Grid[6] ){
+      Grid.gameRun = false;
+  }
+      }
            }
    }
