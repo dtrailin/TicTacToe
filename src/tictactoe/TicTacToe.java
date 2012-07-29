@@ -9,6 +9,7 @@ public boolean player = true; // X = True, O = False
 public int Grid[] = new int[10];
 public String textGrid[] = new String[10];
 public boolean gameRun = true;
+public int roundNo = 0;
 public void gridReset (){
     for(int i = 0; i < Grid.length; i++)
     {Grid[i] = 0;}
@@ -28,11 +29,11 @@ try{
         if (player == true){
          Grid[input] = 1;
 player = false;
-        }
+       roundNo++;  }
 else {
      Grid[input] = 2;
     player = true;
-}
+roundNo++;}
 }
 else{
     System.out.println("There is already something there. Try again");
@@ -139,8 +140,7 @@ catch(NumberFormatException bad){
    Grid.convert();
    Grid.printGrid1();
    Grid.checkWin();
-   x++;
-   if (x == 9){
+   if (Grid.roundNo == 9){
        Grid.gameRun = false;
        System.out.println("It's a tie!");
    }
