@@ -126,7 +126,9 @@ catch(NumberFormatException bad){
  } 
    public static void main (String[] args) throws IOException {
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
- TicTacToe Grid = new TicTacToe();
+    boolean run = true;
+    while (run == true){ 
+    TicTacToe Grid = new TicTacToe();
   Grid.gridReset();
   Grid.printGrid();
   int x = 0;
@@ -145,5 +147,24 @@ catch(NumberFormatException bad){
        System.out.println("It's a tie!");
    }
       }
-           }
+     System.out.println("Would you like to play another round?(y/n)")  ;  
+    boolean ask = true;  
+     while (ask == true ){
+                switch (TicTacToe.Input()) {
+                    case "n":
+                        run = false;
+                        System.out.println("Thanks for playing!");
+                        ask = false;
+                        break;
+                    case "y":
+                        ask = false;
+                        break;
+                    default:
+                        System.out.println("Not valid answer.");
+                        break;
+                }
+    }
+            
+    }
+   }
    }
