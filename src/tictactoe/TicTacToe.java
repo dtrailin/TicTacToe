@@ -16,17 +16,20 @@ public void gridReset (){
     {textGrid[i] = " ";  }
 }
 public void convert() throws IOException{
- byte input = Byte.parseByte(TicTacToe.Input());
-if (player == true){
-    Grid[input] = 1;
-player = false;}
-
+ int input = Integer.parseInt(TicTacToe.Input());
+if (Grid[input] == 0){
+        if (player == true){
+         Grid[input] = 1;
+player = false;
+        }
 else {
-    Grid[input] = 2;
+     Grid[input] = 2;
     player = true;
 }
-    
-
+}
+else{
+    System.out.println("There is already something there. Try again");
+}
  for(int i = 0; i < Grid.length; i++){
  switch (Grid[i]){
      case 1:
@@ -75,8 +78,14 @@ else {
   Grid.gridReset();
   Grid.printGrid();
   while ( Grid.gameRun == true){ 
+   if (Grid.player == true){
+         System.out.println("Where do you want to place (X)?");
+   }
+   else {
+         System.out.println("Where do you want to place (O)?");
+   }
    Grid.convert();
-  Grid.printGrid1();
+   Grid.printGrid1();
   if (Grid.Grid[4] == Grid.Grid[5] && Grid.Grid [5] == Grid.Grid[6] ){
       Grid.gameRun = false;
   }
