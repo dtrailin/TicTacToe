@@ -15,8 +15,9 @@ public void gridReset (){
     for(int i = 0; i < textGrid.length; i++)
     {textGrid[i] = " ";  }
 }
-public void convert() throws IOException{
- int input = Integer.parseInt(TicTacToe.Input());
+public void convert() throws IOException, NumberFormatException {
+try{
+     int input = Integer.parseInt(TicTacToe.Input());
  if (input > 9 || input < 1){
      System.out.println("Number out of bounds");
  }
@@ -45,6 +46,10 @@ else{
          break;
       }
     }
+}
+}
+catch(NumberFormatException bad){
+  System.out.println("That's not a number...");  
 }
 }
  public void printGrid1(){
