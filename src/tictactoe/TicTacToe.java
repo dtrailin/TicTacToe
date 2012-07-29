@@ -17,6 +17,12 @@ public void gridReset (){
 }
 public void convert() throws IOException{
  int input = Integer.parseInt(TicTacToe.Input());
+ if (input > 9 || input < 1){
+     System.out.println("Number out of bounds");
+ }
+ else{
+     
+  
  if (Grid[input] == 0){
         if (player == true){
          Grid[input] = 1;
@@ -39,6 +45,7 @@ else{
          break;
       }
     }
+}
 }
  public void printGrid1(){
     int gridNo = 1;
@@ -72,31 +79,51 @@ else{
      return Input;
     }
  public void checkWin(){
-    for (int x = 0; x < 3;x++ )
+    for (int x = 0; x < 6;x+=3 )
   {
-     if (Grid[x+0] == Grid[x+1] && Grid [x+1] == Grid[x+2] && Grid[x+0] == 1){
+     if (Grid[x+1] == Grid[x+2] && Grid [x+2] == Grid[x+3] && Grid[x+1] == 1){
          gameRun = false;
          System.out.println("The winner is X!");
      }
-     if (Grid[x+0] == Grid[x+1] && Grid [x+1] == Grid[x+2] && Grid[x+0] == 2){
-         gameRun = false;
-         System.out.println("The winner is O!");
-     }
-     if (Grid[x+0] == Grid[x+3] && Grid [x+3] == Grid[x+6] && Grid[x+0] == 1){
-         gameRun = false;
-         System.out.println("The winner is X!");
-     }
-     if (Grid[x+0] == Grid[x+3] && Grid [x+3] == Grid[x+6] && Grid[x+0] == 2){
+     if (Grid[x+1] == Grid[x+2] && Grid [x+2] == Grid[x+3] && Grid[x+1] == 2){
          gameRun = false;
          System.out.println("The winner is O!");
      }
   }
- }
+    for (int l =0; l < 3; l++) {
+        if (Grid[l+1] == Grid[l+4] && Grid [l+4] == Grid[l+7] && Grid[l+1] == 1){
+         gameRun = false;
+         System.out.println("The winner is X!");
+     }
+     if (Grid[l+1] == Grid[l+4] && Grid [l+4] == Grid[l+7] && Grid[l+1] == 2){
+         gameRun = false;
+         System.out.println("The winner is O!");
+     }
+     
+     }
+    if (Grid[1] == Grid[5] && Grid [5] == Grid[9] && Grid[1] == 1){
+         gameRun = false;
+         System.out.println("The winner is X!");
+     }
+     if (Grid[1] == Grid[5] && Grid [5] == Grid[9] && Grid[1] == 2){
+         gameRun = false;
+         System.out.println("The winner is O!");
+     }
+     if (Grid[3] == Grid[5] && Grid [5] == Grid[7] && Grid[3] == 1){
+         gameRun = false;
+         System.out.println("The winner is X!");
+     }
+     if (Grid[3] == Grid[5] && Grid [5] == Grid[7] && Grid[3] == 2){
+         gameRun = false;
+         System.out.println("The winner is O!");
+     }
+ } 
    public static void main (String[] args) throws IOException {
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
  TicTacToe Grid = new TicTacToe();
   Grid.gridReset();
   Grid.printGrid();
+  int x = 0;
   while ( Grid.gameRun == true){ 
    if (Grid.player == true){
          System.out.println("Where do you want to place (X)?");
@@ -107,6 +134,11 @@ else{
    Grid.convert();
    Grid.printGrid1();
    Grid.checkWin();
+   x++;
+   if (x == 9){
+       Grid.gameRun = false;
+       System.out.println("It's a tie!");
+   }
       }
            }
    }
