@@ -17,7 +17,7 @@ public void gridReset (){
 }
 public void convert() throws IOException{
  int input = Integer.parseInt(TicTacToe.Input());
-if (Grid[input] == 0){
+ if (Grid[input] == 0){
         if (player == true){
          Grid[input] = 1;
 player = false;
@@ -71,7 +71,27 @@ else{
     String Input = bufRead.readLine();
      return Input;
     }
- 
+ public void checkWin(){
+    for (int x = 0; x < 3;x++ )
+  {
+     if (Grid[x+0] == Grid[x+1] && Grid [x+1] == Grid[x+2] && Grid[x+0] == 1){
+         gameRun = false;
+         System.out.println("The winner is X!");
+     }
+     if (Grid[x+0] == Grid[x+1] && Grid [x+1] == Grid[x+2] && Grid[x+0] == 2){
+         gameRun = false;
+         System.out.println("The winner is O!");
+     }
+     if (Grid[x+0] == Grid[x+3] && Grid [x+3] == Grid[x+6] && Grid[x+0] == 1){
+         gameRun = false;
+         System.out.println("The winner is X!");
+     }
+     if (Grid[x+0] == Grid[x+3] && Grid [x+3] == Grid[x+6] && Grid[x+0] == 2){
+         gameRun = false;
+         System.out.println("The winner is O!");
+     }
+  }
+ }
    public static void main (String[] args) throws IOException {
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
  TicTacToe Grid = new TicTacToe();
@@ -86,10 +106,7 @@ else{
    }
    Grid.convert();
    Grid.printGrid1();
-  if (Grid.Grid[4] == Grid.Grid[5] && Grid.Grid [5] == Grid.Grid[6] && Grid.Grid[5] != 0)// need to come up with with more clever way
-  {
-      Grid.gameRun = false;
-  }
+   Grid.checkWin();
       }
            }
    }
