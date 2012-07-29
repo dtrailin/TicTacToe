@@ -129,6 +129,7 @@ catch(NumberFormatException bad){
     boolean run = true;
     while (run == true){ 
     TicTacToe Grid = new TicTacToe();
+    PlayAI AI = new PlayAI();
   Grid.gridReset();
   Grid.printGrid();
   int x = 0;
