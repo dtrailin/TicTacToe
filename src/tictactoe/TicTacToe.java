@@ -86,7 +86,7 @@ else{
    }
    Grid.convert();
    Grid.printGrid1();
-  if (Grid.Grid[4] == Grid.Grid[5] && Grid.Grid [5] == Grid.Grid[6] && Grid.Grid[5] != 0)// need to come with more clever way
+  if (Grid.Grid[4] == Grid.Grid[5] && Grid.Grid [5] == Grid.Grid[6] && Grid.Grid[5] != 0)// need to come up with with more clever way
   {
       Grid.gameRun = false;
   }
