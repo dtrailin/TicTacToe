@@ -143,6 +143,15 @@ catch(NumberFormatException bad){
            roundNo++;  
            boolean AIwork = true;
      while (AIwork == true){
+   /*AI logic:
+1. Check if there is a tile that you can win in 1 move
+if there is no such tile:
+2. Check if there is a tile that your opponent can win in 1 move
+if there is no such tile:
+3. Check if there is a tile that can make two tiles apply to the rule #1
+if there is no such tile:
+4. Check if there is a tile that your opponent can make two tiles apply to the rule #2
+if there is no such tile:*/
          int AIplace =1+rand.nextInt(9); 
          if (Grid[AIplace] == 0){
          Grid[AIplace] = 2;
