@@ -3,6 +3,7 @@ package tictactoe;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Random;
 public class TicTacToe { 
     //1 = X, 2 = O
 public boolean player = true; // X = True, O = False
@@ -14,7 +15,8 @@ public void gridReset (){
     for(int i = 0; i < Grid.length; i++)
     {Grid[i] = 0;}
     for(int i = 0; i < textGrid.length; i++)
-    {textGrid[i] = " ";  }
+    {textGrid[i] = " "; 
+    roundNo = 0;}
 }
 public void convert() throws IOException, NumberFormatException {
 try{
@@ -124,16 +126,80 @@ catch(NumberFormatException bad){
          System.out.println("The winner is O!");
      }
  } 
+   public void AI() throws IOException{
+       
+       Random rand = new Random();
+       try{
+    
+           int input = Integer.parseInt(TicTacToe.Input());
+ if (input > 9 || input < 1){
+     System.out.println("Number out of bounds");
+ }
+  else{
+     
+  
+ if (Grid[input] == 0){
+         Grid[input] = 1;
+           roundNo++;  
+           boolean AIwork = true;
+     while (AIwork == true){
+         int AIplace =1+rand.nextInt(9); 
+         if (Grid[AIplace] == 0){
+         Grid[AIplace] = 2;
+         AIwork = false;
+         }
+     }
+}
+ for(int i = 0; i < Grid.length; i++){
+ switch (Grid[i]){
+     case 1:
+         textGrid[i] = "X";
+         break;
+     case 2:textGrid[i] = "O";
+         
+     break;}
+ }
+       }
+   
+      printGrid1();
+       }
+
+       catch(NumberFormatException bad){
+  System.out.println("That's not a number...");  
+}
+     
+}
    public static void main (String[] args) throws IOException {
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
     boolean run = true;
     while (run == true){ 
     TicTacToe Grid = new TicTacToe();
-    PlayAI AI = new PlayAI();
+ 
   Grid.gridReset();
   Grid.printGrid();
-  int x = 0;
-  while ( Grid.gameRun == true){ 
+  boolean asks = true;
+  System.out.println("Would you like to play AI of human?\n 1 = AI, 2 = human");
+  while (asks == true ){
+                switch (TicTacToe.Input()) {
+                    case "1":
+                      System.out.println(System.getProperty("user.name")+" VS AI");
+                        Grid.gridReset();
+                      asks = false;
+                        while ( Grid.gameRun == true){   
+                         Grid.AI();     
+   Grid.checkWin();
+   if (Grid.roundNo == 9){
+       Grid.gameRun = false;
+       System.out.println("It's a tie!");
+                        asks = false;
+   }
+                      }
+                        
+                        break;
+                    case "2":
+                        System.out.println("VS human");
+                        asks = false;
+                        while ( Grid.gameRun == true){ 
    if (Grid.player == true){
          System.out.println("Where do you want to place (X)?");
    }
@@ -148,7 +214,15 @@ catch(NumberFormatException bad){
        System.out.println("It's a tie!");
    }
       }
-     System.out.println("Would you like to play another round?(y/n)")  ;  
+                        break;
+                   default:
+                        System.out.println("Not valid answer");
+                        break;
+                }
+  
+      
+  
+  System.out.println("Would you like to play another round?(y/n)")  ;  
     boolean ask = true;  
      while (ask == true ){
                 switch (TicTacToe.Input()) {
@@ -164,8 +238,11 @@ catch(NumberFormatException bad){
                         System.out.println("Not valid answer.");
                         break;
                 }
+     
+                }
     }
             
     }
    }
-   }
+}
+   
