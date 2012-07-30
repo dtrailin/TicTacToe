@@ -178,7 +178,7 @@ catch(NumberFormatException bad){
   Grid.gridReset();
   Grid.printGrid();
   boolean asks = true;
-  System.out.println("Would you like to play AI of human?\n 1 = AI, 2 = human");
+  System.out.println("Would you like to play AI or human?\n 1 = AI, 2 = human");
   while (asks == true ){
                 switch (TicTacToe.Input()) {
                     case "1":
@@ -197,7 +197,7 @@ catch(NumberFormatException bad){
                         
                         break;
                     case "2":
-                        System.out.println("VS human");
+                        System.out.println(System.getProperty("user.name")+"VS human");
                         asks = false;
                         while ( Grid.gameRun == true){ 
    if (Grid.player == true){
@@ -244,5 +244,4 @@ catch(NumberFormatException bad){
             
     }
    }
-}
-   
+}  
