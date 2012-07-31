@@ -65,7 +65,6 @@ public class TicTacToe {
         int gridNo = 1;
         for (int row = 0; row < 3; row++) {
             for (int line = 0; line < 3; line++) {
-
                 System.out.print("[" + textGrid[gridNo] + "]");
                 gridNo++;
             }
@@ -83,7 +82,6 @@ public class TicTacToe {
                 gridNo1++;
             }
             System.out.printf("%n");
-
         }
     }
 
@@ -114,7 +112,6 @@ public class TicTacToe {
                 gameRun = false;
                 System.out.println("The winner is O!");
             }
-
         }
         if (Grid[1] == Grid[5] && Grid[5] == Grid[9] && Grid[1] == 1) {
             gameRun = false;
@@ -144,7 +141,6 @@ public class TicTacToe {
                 if (input > 9 || input < 1) {
                     System.out.println("Number out of bounds");
                 } else {
-
                     if (Grid[input] == 0) {
                         Grid[input] = 1;
                         roundNo++;
@@ -153,18 +149,35 @@ public class TicTacToe {
                         System.out.println("There is already something there. Try again");
                     }
                 }
-                if (turnWork == false) {
-                    boolean AIwork = true;
-                    while (AIwork == true) {
-                        for (int x = 0; x < 6; x += 3) {
-                            if (Grid[x + 1] == Grid[x + 2] && Grid[x + 2] == 2 && Grid[x + 3] == 0) {
-                                Grid[x + 3] = 2;
+            }
+            if (turnWork == false) {
+                boolean AIwork = true;
+                while (AIwork == true) {
+                    for (int x = 0; x < 6; x += 3) {
+                        if (Grid[x + 1] == Grid[x + 2] && Grid[x + 2] == 2 && Grid[x + 3] == 0) {
+                            Grid[x + 3] = 2;
+                            AIwork = false;
+                        } else if (Grid[x + 2] == Grid[x + 3] && Grid[x + 3] == 2 && Grid[x + 1] == 0) {
+                            Grid[x + 1] = 2;
+                            AIwork = false;
+                        } else if (Grid[x + 1] == Grid[x + 3] && Grid[x + 3] == 2 && Grid[x + 2] == 0) {
+                            Grid[x + 2] = 2;
+                            AIwork = false;
+                        }
+                        for (int l = 0; l < 3; l++) {
+                            if (Grid[l + 1] == Grid[l + 4] && Grid[l + 4] == 2 && Grid[l + 7] == 0) {
+                                Grid[l + 7] = 2;
                                 AIwork = false;
-                            } else if (Grid[x + 2] == Grid[x + 3] && Grid[x + 3] == 2 && Grid[x + 1] == 0) {
-                                Grid[x + 1] = 2;
+                            } else if (Grid[l + 4] == Grid[l + 7] && Grid[l + 4] == 2 && Grid[l + 1] == 0) {
+                                Grid[l + 1] = 2;
+                                AIwork = false;
+                            } else if (Grid[l + 1] == Grid[l + 7] && Grid[l + 1] == 2 && Grid[l + 4] == 0) {
+                                Grid[l + 4] = 2;
                                 AIwork = false;
                             }
                         }
+                    }
+                        roundNo++;
                         int AIplace = 1 + rand.nextInt(9);
                         if (Grid[AIplace] == 0) {
                             Grid[AIplace] = 2;
@@ -180,17 +193,17 @@ public class TicTacToe {
                             break;
                         case 2:
                             textGrid[i] = "O";
-
                             break;
                     }
                 }
-            }
 
-            printGrid1();
-        } catch (NumberFormatException bad) {
+
+                printGrid1();
+            }   catch (NumberFormatException bad) {
             System.out.println("That's not a number...");
         }
     }
+    
 
     public static void main(String[] args) throws IOException {
         System.out.println("Welcome to Denis' Tic Tac Toe game!");
@@ -217,7 +230,6 @@ public class TicTacToe {
                                 asks = false;
                             }
                         }
-
                         break;
                     case "2":
                         System.out.println(System.getProperty("user.name") + "VS human");
@@ -242,8 +254,6 @@ public class TicTacToe {
                         break;
                 }
             }
-
-
             System.out.println("Would you like to play another round?(y/n)");
             boolean ask = true;
             while (ask == true) {
