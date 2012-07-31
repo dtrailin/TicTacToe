@@ -130,34 +130,43 @@ catch(NumberFormatException bad){
        
        Random rand = new Random();
        try{
-    
+    boolean turnWork = true;
+   while ( turnWork == true){
            int input = Integer.parseInt(TicTacToe.Input());
  if (input > 9 || input < 1){
      System.out.println("Number out of bounds");
  }
   else{
      
-  
- if (Grid[input] == 0){
+     if (Grid[input] == 0){
          Grid[input] = 1;
            roundNo++;  
-           boolean AIwork = true;
+           turnWork = false;
+ }
+ else{
+    System.out.println("There is already something there. Try again");}
+ }
+        if (turnWork == false) {
+            boolean AIwork = true;
      while (AIwork == true){
-   /*AI logic:
-1. Check if there is a tile that you can win in 1 move
-if there is no such tile:
-2. Check if there is a tile that your opponent can win in 1 move
-if there is no such tile:
-3. Check if there is a tile that can make two tiles apply to the rule #1
-if there is no such tile:
-4. Check if there is a tile that your opponent can make two tiles apply to the rule #2
-if there is no such tile:*/
-         int AIplace =1+rand.nextInt(9); 
+         for (int x = 0; x < 6;x+=3 )
+  {
+     if (Grid[x+1] == Grid[x+2] && Grid [x+2] == 2 && Grid[x+3] == 0){
+         Grid[x+3] = 2;
+          AIwork = false;
+     }
+     else if (Grid[x+2] == Grid[x+3] && Grid [x+3] == 2 && Grid[x+1] == 0){
+          Grid[x+1] = 2;
+          AIwork = false;
+     }
+ }
+        int AIplace =1+rand.nextInt(9); 
          if (Grid[AIplace] == 0){
          Grid[AIplace] = 2;
-         AIwork = false;
-         }
-     }
+         //System.out.println("1");
+        AIwork = false;
+ }
+     }      
 }
  for(int i = 0; i < Grid.length; i++){
  switch (Grid[i]){
@@ -173,11 +182,11 @@ if there is no such tile:*/
       printGrid1();
        }
 
-       catch(NumberFormatException bad){
+catch(NumberFormatException bad){
   System.out.println("That's not a number...");  
 }
-     
 }
+
    public static void main (String[] args) throws IOException {
     System.out.println("Welcome to Denis' Tic Tac Toe game!");
     boolean run = true;
@@ -228,7 +237,7 @@ if there is no such tile:*/
                         System.out.println("Not valid answer");
                         break;
                 }
-  
+  }
       
   
   System.out.println("Would you like to play another round?(y/n)")  ;  
@@ -252,5 +261,4 @@ if there is no such tile:*/
     }
             
     }
-   }
-}  
+   } 
