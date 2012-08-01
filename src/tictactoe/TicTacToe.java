@@ -137,7 +137,7 @@ public class TicTacToe {
         Random rand = new Random();
         try {
             boolean turnWork = true;
-            if (player == true) {
+            if (player == true && roundNo != 9) {
                 while (turnWork == true) {
                     int input = Integer.parseInt(TicTacToe.Input());
                     if (input > 9 || input < 1) {
@@ -154,7 +154,8 @@ public class TicTacToe {
                     }
                 }
             }
-            if (player == false) {
+            if (player == false && roundNo != 9) {
+                roundNo++;
                 boolean AIwork = true;
                 while (AIwork == true) {
                     for (int x = 0; x <= 6; x += 2) {
@@ -235,7 +236,7 @@ public class TicTacToe {
             Grid.gridReset();
             Grid.printGrid();
             boolean asks = true;
-            System.out.println("Would you like to play AI or human?\n 1 = AI, 2 = human");
+            System.out.println("Would you like to play AI or human?\n 1 = AI \t 2 = human");
             while (asks == true) {
                 switch (TicTacToe.Input()) {
                     case "1":
@@ -245,15 +246,14 @@ public class TicTacToe {
                         while (Grid.gameRun == true) {
                             Grid.AI();
                             Grid.checkWin();
-                            if (Grid.roundNo == 9) {
+                            if (Grid.roundNo == 9 && Grid.gameRun == true) {
                                 Grid.gameRun = false;
                                 System.out.println("It's a tie!");
-                                asks = false;
                             }
                         }
                         break;
                     case "2":
-                        System.out.println(System.getProperty("user.name") + "VS human");
+                        System.out.println(System.getProperty("user.name") + " VS human");
                         asks = false;
                         while (Grid.gameRun == true) {
                             if (Grid.player == true) {
@@ -264,7 +264,7 @@ public class TicTacToe {
                             Grid.convert();
                             Grid.printGrid1();
                             Grid.checkWin();
-                            if (Grid.roundNo == 9) {
+                            if (Grid.roundNo == 9 && Grid.gameRun == true) {
                                 System.out.println("It's a tie!");
                                 Grid.gameRun = false;
                             }
