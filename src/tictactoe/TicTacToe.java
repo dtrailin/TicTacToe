@@ -154,7 +154,8 @@ public class TicTacToe {
                     }
                 }
             }
-            if (player == false && roundNo != 9) {
+            else if (player == false && roundNo != 9 && gameRun == true) {
+                System.out.println("AI");
                 roundNo++;
                 boolean AIwork = true;
                 while (AIwork == true) {
