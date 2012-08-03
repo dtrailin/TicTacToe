@@ -3,11 +3,11 @@ package tictactoe;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 import java.util.Random;
 
 public class TicTacToe {
     //1 = X, 2 = O
-
     public boolean player = true; // X = True, O = False
     public int Grid[] = new int[10];
     public String textGrid[] = new String[10];
@@ -23,6 +23,14 @@ public class TicTacToe {
             roundNo = 0;
             player = true;
         }
+    }
+
+    public void clear(int clear) {
+        char c = '\n';
+        int length = clear;
+        char[] chars = new char[length];
+        Arrays.fill(chars, c);
+        System.out.print(String.valueOf(chars));
     }
 
     public void convert() throws IOException, NumberFormatException {
@@ -153,14 +161,13 @@ public class TicTacToe {
                         }
                     }
                 }
-            }
-            else if (player == false && roundNo != 9 && gameRun == true) {
+            } else if (player == false && roundNo != 9 && gameRun == true) {
                 System.out.println("AI");
                 roundNo++;
                 boolean AIwork = true;
                 while (AIwork == true) {
                     for (int x = 0; x <= 6; x += 2) {
-                        if (Grid[x + 1] == Grid[x + 2] && Grid[x + 2] == 2 && Grid[x + 3] == 0  && AIwork == true) {
+                        if (Grid[x + 1] == Grid[x + 2] && Grid[x + 2] == 2 && Grid[x + 3] == 0 && AIwork == true) {
                             Grid[x + 3] = 2;
                             AIwork = false;
                         } else if (Grid[x + 2] == Grid[x + 3] && Grid[x + 3] == 2 && Grid[x + 1] == 0 && AIwork == true) {
@@ -171,7 +178,7 @@ public class TicTacToe {
                             AIwork = false;
                         }
                         for (int l = 0; l < 3; l++) {
-                             if (Grid[l + 1] == Grid[l + 4] && Grid[l + 4] == 2 && Grid[l + 7] == 0 && AIwork == true) {
+                            if (Grid[l + 1] == Grid[l + 4] && Grid[l + 4] == 2 && Grid[l + 7] == 0 && AIwork == true) {
                                 Grid[l + 7] = 2;
                                 AIwork = false;
                             } else if (Grid[l + 4] == Grid[l + 7] && Grid[l + 4] == 2 && Grid[l + 1] == 0 && AIwork == true) {
@@ -202,8 +209,8 @@ public class TicTacToe {
                             AIwork = false;
                         }
                     }
-                          for ( int x = 0; x <= 6; x += 2) {
-                        if (Grid[x + 1] == Grid[x + 2] && Grid[x + 2] == 1 && Grid[x + 3] == 0  && AIwork == true) {
+                    for (int x = 0; x <= 6; x += 2) {
+                        if (Grid[x + 1] == Grid[x + 2] && Grid[x + 2] == 1 && Grid[x + 3] == 0 && AIwork == true) {
                             Grid[x + 3] = 2;
                             AIwork = false;
                         } else if (Grid[x + 2] == Grid[x + 3] && Grid[x + 3] == 1 && Grid[x + 1] == 0 && AIwork == true) {
@@ -214,7 +221,7 @@ public class TicTacToe {
                             AIwork = false;
                         }
                         for (int l = 0; l < 3; l++) {
-                             if (Grid[l + 1] == Grid[l + 4] && Grid[l + 4] == 1 && Grid[l + 7] == 0 && AIwork == true) {
+                            if (Grid[l + 1] == Grid[l + 4] && Grid[l + 4] == 1 && Grid[l + 7] == 0 && AIwork == true) {
                                 Grid[l + 7] = 2;
                                 AIwork = false;
                             } else if (Grid[l + 4] == Grid[l + 7] && Grid[l + 4] == 1 && Grid[l + 1] == 0 && AIwork == true) {
@@ -246,7 +253,7 @@ public class TicTacToe {
                         }
                     }
                     int AIplace = 1 + rand.nextInt(9);
-                    if (Grid[AIplace] == 0  && AIwork == true) {
+                    if (Grid[AIplace] == 0 && AIwork == true) {
                         Grid[AIplace] = 2;
                         AIwork = false;
                     }
@@ -289,6 +296,7 @@ public class TicTacToe {
                         while (Grid.gameRun == true) {
                             Grid.AI();
                             Grid.checkWin();
+                            final String ANSI_CLS = "\u001b[2J";
                             if (Grid.roundNo == 9 && Grid.gameRun == true) {
                                 Grid.gameRun = false;
                                 System.out.println("It's a tie!");
@@ -329,6 +337,22 @@ public class TicTacToe {
                         break;
                     case "y":
                         ask = false;
+                        switch (System.getProperty("os.name")) {
+                            case "Linux":
+                                ProcessBuilder ProcessBuilder = new ProcessBuilder();
+                                String line = ProcessBuilder.environment().get("LINES");
+                                if (line != null) {
+                                    Grid.clear(Integer.parseInt(line));
+                                } else {
+                                    Grid.clear(50);
+                                }
+                                break;
+                            default:
+
+                                break;
+                        }
+
+
                         break;
                     default:
                         System.out.println("Not valid answer.");
